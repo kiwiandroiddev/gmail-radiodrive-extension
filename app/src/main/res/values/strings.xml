@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Gmail RadioDrive Extension</string>
+    <string name="announcement_description">Notifies you of new messages in your Gmail inbox</string>
+</resources>
