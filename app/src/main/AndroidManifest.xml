@@ -9,8 +9,16 @@
         android:icon="@drawable/ic_launcher"
         >
 
+        <activity
+            android:name=".GmailSettingsActivity"
+            android:theme="@android:style/Theme.Holo"
+            android:icon="@drawable/ic_gmail"
+            android:label="@string/settings_activity_title"
+            android:exported="true" />
+
         <service
             android:name="com.kiwiandroiddev.gmailradiodriveextension.app.GmailAnnouncement"
+            android:permission="com.kiwiandroiddev.radiodrive.permission.READ_EXTENSION_DATA"
             android:exported="true"
             android:label="Gmail"
             android:icon="@drawable/ic_gmail">
@@ -21,6 +29,10 @@
             <meta-data android:name="defaultSongsBetween" android:value="1" />
             <meta-data android:name="description"
                 android:value="@string/announcement_description" />
+
+            <meta-data
+                android:name="settingsActivity"
+                android:value="com.kiwiandroiddev.gmailradiodriveextension.app.GmailSettingsActivity" />
 
             <intent-filter>
                 <action android:name="com.kiwiandroiddev.radiodrive.Extension" />

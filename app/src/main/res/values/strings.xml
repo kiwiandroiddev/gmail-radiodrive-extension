@@ -1,4 +1,23 @@
 <resources>
     <string name="app_name">Gmail RadioDrive Extension</string>
     <string name="announcement_description">Notifies you of new messages in your Gmail inbox</string>
+
+    <!-- Gmail -->
+    <string name="pref_gmail_label_title">Show unread count for label</string>
+    <string-array name="pref_gmail_label_display_names">
+        <item>Inbox</item>
+        <item>Priority Inbox</item>
+    </string-array>
+    <string-array name="pref_gmail_label_inbox_values" translatable="false">
+        <item>i</item>
+        <item>p</item>
+    </string-array>
+
+    <string name="pref_gmail_accounts_title">Show unread count for accounts</string>
+    <string name="settings_activity_title">Configure Gmail</string>
+    <plurals name="pref_gmail_accounts_summary_template">
+        <item quantity="one">%1$d of %2$d account selected</item>
+        <item quantity="other">%1$d of %2$d accounts selected</item>
+    </plurals>
+
 </resources>
