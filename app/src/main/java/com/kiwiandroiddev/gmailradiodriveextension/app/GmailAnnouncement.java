@@ -45,6 +45,7 @@ public class GmailAnnouncement extends RadioDriveAnnouncement {
 
     public static final String PREF_ACCOUNTS = "pref_gmail_accounts";
     public static final String PREF_LABEL = "pref_gmail_label";
+    public static final String PREF_LAST_UNREAD_COUNT = "pref_last_unread_count";
 
     private static final String ACCOUNT_TYPE_GOOGLE = "com.google";
 
@@ -129,13 +130,17 @@ public class GmailAnnouncement extends RadioDriveAnnouncement {
             cursor.close();
         }
 
-        // STUB
-        Log.d(TAG, "getSelectedAccounts() = " + getSelectedAccounts());
-        for (Pair<String, Integer> unreadForAccount : unreadPerAccount) {
-            Log.d(TAG, unreadForAccount.first + " = " + unreadForAccount.second);
+        int lastUnreadCount = sp.getInt(PREF_LAST_UNREAD_COUNT, 0);
+        sp.edit().putInt(PREF_LAST_UNREAD_COUNT, unread).commit();
+
+        if (unread > lastUnreadCount) {
+            // return "You have 2 new Gmail messages"
+            int newMessages = (unread - lastUnreadCount);
+            return getResources().getQuantityString(R.plurals.plural_new_message_announcement,
+                    newMessages, newMessages);
         }
 
-        return "You have " + unread + " unread Gmail messages.";
+        return null;    // no increase in unread count, skip announcement
     }
 
     @Override
